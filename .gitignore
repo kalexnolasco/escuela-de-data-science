@@ -1,0 +1,13 @@
+*.pyx
+*.pyc
+*.log
+
+# Editors
+.vscode
+.project
+*.idea
+.idea
+
+# Enviroment local
+venv
+
