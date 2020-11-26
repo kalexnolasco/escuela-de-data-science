@@ -1,9 +1,4 @@
-Hola soy Kevin Alexander Nolasco, 
-vivo en España
-Me gusta Python y beber mucho con los colegas.
+Hola soy Kevin Alexander Nolasco
+Me gusta Python y beber con los colegas.
 
-Él es bajito.
-
-Python Developer in Wireless DNA 2 years ago.
-
-Hoy hablamos de su vida y obra maestra.
+Mañana nos enfocaremos en su vida laboral.
