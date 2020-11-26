@@ -1,2 +1,3 @@
-Hola soy Kevin Alexander Nolasco
-Me gusta Python y beber con los colegas.
+Hola soy Kevin Alexander Nolasco, 
+vivo en España
+Me gusta Python y beber mucho con los colegas.
