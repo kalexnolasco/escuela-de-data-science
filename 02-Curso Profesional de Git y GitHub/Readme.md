@@ -8,6 +8,7 @@
 * `git rm`: lo usamos para borrar un archivo que hayamos añadido, para eliminarlo por completo de nuestra rama usamos `git rm --cached`.
 * `git commit`: se usa para añadir un commit a nuestra rama, también podemos ponerle un `-m`() seguidamente ponemos entre comillas nuestro ensaje(`git commit -m "MENSAJE..."`).
 * `git log`: se usa para ver la historia de nuestros archivos, los commits, el usuario que lo cambió, cuando se realizaron los cambios etc. seguidamente ponemos el nombre de nuestro archivo.
+    * `git log --stat`: nos muestra los cambios específicos de los archivos(cuántos bytes han cambiado).
 * `git show`: nos mustra los cambios que han existido sobre los dos últimos commits de un archivo y es muy útil para detectar cuándo se produjeron cambios.
 * `git diff`: la diferencia entre una version y otra especificamente (`git diff commitA commitB`). Se puede obtener el ID de los commits con el comando `git log`.
 ## Volver al pasados `git reset`
