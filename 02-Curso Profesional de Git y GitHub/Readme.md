@@ -9,6 +9,7 @@
     * `git rm --cached`: Elimina los archivos del staging y del próximo commit pero los mantiene en nuestro disco duro.
     * `git rm --force`: Elimina los archivos del staging y del disco duro. Git siempre guarda todo, por lo que podemos acceder al registro de la existencia de los archivos, de modo que podremos recuperarlos si es necesario (pero debemos usar comandos más avanzados).
 * `git commit`: se usa para añadir un commit a nuestra rama, también podemos ponerle un `-m`() seguidamente ponemos entre comillas nuestro ensaje(`git commit -m "MENSAJE..."`).
+    * `git commit -am "MESANJE"`: agreagamos y realizamos commit a la vez, sólo funciona si los archivos no son nuevos.
 * `git log`: se usa para ver la historia de nuestros archivos, los commits, el usuario que lo cambió, cuando se realizaron los cambios etc. seguidamente ponemos el nombre de nuestro archivo.
     * `git log --stat`: nos muestra los cambios específicos de los archivos(cuántos bytes han cambiado).
 * `git show`: nos mustra los cambios que han existido sobre los dos últimos commits de un archivo y es muy útil para detectar cuándo se produjeron cambios.
@@ -25,3 +26,10 @@ Este comando es muy peligroso y debemos usarlo solo en caso de emergencia.
     * `git reset --hard`: volvemos absolutamente al cambio borrando completamente todo los cambios que hayan. Se pierde todo de staging area y working directory.
     * `git reset --soft`: Volvemos al pasado manteniendo lo que se tenga en el 'staging area'(si hemos dado git add, se mantienen alli y no se pierden).
     * `git reset HEAD`: Este es el comando para sacar archivos del área de Staging. No para borrarlos ni nada de eso, solo para que los últimos cambios de estos archivos no se envíen al último commit, a menos que cambiemos de opinión y los incluyamos de nuevo en staging con git add, por supuesto.
+## Trabajando con repositorio remoto
+* `git clone url_del_servidor_remoto`: Nos permite descargar los archivos de la última versión de la rama principal y todo el historial de cambios en la carpeta .git.
+* `git push`: Luego de hacer `git add` y `git commit` debemos ejecutar este comando para mandar los cambios al servidor remoto.
+* `git fetch`: Lo usamos para traer actualizaciones del servidor remoto y guardarlas en nuestro repositorio local (en caso de que hayan, por supuesto).
+* `git merge`: También usamos el comando git merge con servidores remotos. Lo necesitamos para combinar los últimos cambios del servidor remoto y nuestro directorio de trabajo.
+* `git pull`: Básicamente, git fetch y git merge al mismo tiempo.
+## Tabajando con ramas
