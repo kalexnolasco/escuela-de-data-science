@@ -33,3 +33,6 @@ Este comando es muy peligroso y debemos usarlo solo en caso de emergencia.
 * `git merge`: También usamos el comando git merge con servidores remotos. Lo necesitamos para combinar los últimos cambios del servidor remoto y nuestro directorio de trabajo.
 * `git pull`: Básicamente, git fetch y git merge al mismo tiempo.
 ## Tabajando con ramas
+* `git branch RAMA`: crea la rama, para cambiarnos de rama debemos utilizar `git checkout RAMA`.
+## MERGE
+Un merge es un commit. Se debe hacer checkuot a la rama  a la que se quiere traer los cambios. Si en las dos ramas se hicieron cambios sobre la misma línea, git lanza un error y no deja realizar el merge.
