@@ -36,3 +36,20 @@ Este comando es muy peligroso y debemos usarlo solo en caso de emergencia.
 * `git branch RAMA`: crea la rama, para cambiarnos de rama debemos utilizar `git checkout RAMA`.
 ## MERGE
 Un merge es un commit. Se debe hacer checkuot a la rama  a la que se quiere traer los cambios. Si en las dos ramas se hicieron cambios sobre la misma línea, git lanza un error y no deja realizar el merge.
+## Repositorio Remoto
+* `git remote  add origin <ssh-url>`: Establecer un origin en remoto, sede del repositorio remoto para gestionar nuestro proyecto mediante HTTPS
+* `git remote`: Verifica la existencia del origin remoto (`git remote -v` lo muestra).
+* `git push origin master`: Fusiona la rama master local con la remota.
+* `git pull origin master`: Fusiona la rama master remota con la local.
+* `git remote set-url origin <ssh-url>`: Cohpnfigura git para conectar con el repositorio remoto a traves de ssh
+## TIP: GIT SUPERLOG
+Ejecutar este comando en la terminal y queda guardado en los alias pero de git. con esto se puede ejecutar cada que se escribe git superlog
+```bash
+git config --global alias.superlog "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+```
+## TAGS
+* `git tag -a nombre-del-tag id-del-commit`: Crear un nuevo tag y asignarlo a un commit.
+* `git tag -d nombre-del-tag`: Borrar un tag en el repositorio local.
+* `git tag` o `git show-ref --tags`: Listar los tags de nuestro repositorio local.
+* `git push origin --tags`: Publicar un tag en el repositorio remoto.
+* `git tag -d nombre-del-tag`: y `git push origin :refs/tags/nombre-del-tag`Borrar un tag del repositorio remoto.
