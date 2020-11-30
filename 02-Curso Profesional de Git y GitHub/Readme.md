@@ -35,13 +35,13 @@ Este comando es muy peligroso y debemos usarlo solo en caso de emergencia.
 ## Tabajando con ramas
 * `git branch RAMA`: crea la rama, para cambiarnos de rama debemos utilizar `git checkout RAMA`.
 ## MERGE
-Un merge es un commit. Se debe hacer checkuot a la rama  a la que se quiere traer los cambios. Si en las dos ramas se hicieron cambios sobre la misma línea, git lanza un error y no deja realizar el merge.
+Un merge es un commit. Se debe hacer checkout a la rama  a la que se quiere traer los cambios. Si en las dos ramas se hicieron cambios sobre la misma línea, git lanza un error y no deja realizar el merge.
 ## Repositorio Remoto
 * `git remote  add origin <ssh-url>`: Establecer un origin en remoto, sede del repositorio remoto para gestionar nuestro proyecto mediante HTTPS
 * `git remote`: Verifica la existencia del origin remoto (`git remote -v` lo muestra).
 * `git push origin master`: Fusiona la rama master local con la remota.
-* `git pull origin master`: Fusiona la rama master remota con la local.
-* `git remote set-url origin <ssh-url>`: Cohpnfigura git para conectar con el repositorio remoto a traves de ssh
+* `git pull origin master`: Fusiona la rama remota master con la rama master local.
+* `git remote set-url origin <ssh-url>`: Configura git para conectar con el repositorio remoto a través de ssh
 ## TIP: GIT SUPERLOG
 Ejecutar este comando en la terminal y queda guardado en los alias pero de git. con esto se puede ejecutar cada que se escribe git superlog
 ```bash
@@ -53,3 +53,52 @@ git config --global alias.superlog "log --graph --abbrev-commit --decorate --dat
 * `git tag` o `git show-ref --tags`: Listar los tags de nuestro repositorio local.
 * `git push origin --tags`: Publicar un tag en el repositorio remoto.
 * `git tag -d nombre-del-tag`: y `git push origin :refs/tags/nombre-del-tag`Borrar un tag del repositorio remoto.
+## STASHED!!!
+El stashed nos sirve para guardar cambios para después, Es una lista de estados que nos guarda algunos cambios que hicimos en Staging para poder cambiar de rama sin perder el trabajo que todavía no guardamos en un commit
+
+Ésto es especialmente útil porque hay veces que no se permite cambiar de rama, ésto porque porque tenemos cambios sin guardar, no siempre es un cambio lo suficientemente bueno como para hacer un commit, pero no queremos perder ese código en el que estuvimos trabajando.
+
+El stashed nos permite cambiar de ramas, hacer cambios, trabajar en otras cosas y, más adelante, retomar el trabajo con los archivos que teníamos en Staging pero que podemos recuperar ya que los guardamos en el Stash.
+El comando `git stash` guarda el trabajo actual del Staging en una lista diseñada para ser temporal llamada Stash, para que pueda ser recuperado en el futuro.
+* `git stash save "mensaje identificador del elemento del stashed"`: Podemos poner un mensaje en el stash, para asi diferenciarlos en git stash list por si tenemos varios elementos en el stash
+### Obtener elementos del stash
+El stashed se comporta como una Stack de datos comportándose de manera tipo LIFO (del inglés Last In, First Out, «último en entrar, primero en salir»), así podemos acceder al método pop.
+
+El método pop recuperará y sacará de la lista el último estado del stashed y lo insertará en el staging area, por lo que es importante saber en qué branch te encuentras para poder recuperarlo, ya que el stash será agnóstico a la rama o estado en el que te encuentres, siempre recuperará los cambios que hiciste en el lugar que lo llamas.
+* `git stash pop`: Para recuperar los últimos cambios desde el stash a tu staging area.
+* `git stash pop stash@{<num_stash>}`: Para aplicar los cambios de un stash específico y eliminarlo del stash.
+* `git stash list`:  Ver la lista de cambios guardados en Stash y así poder recuperarlos o hacer algo con ellos.
+* `git stash branch <nombre_de_la_rama>`: Para crear una rama y aplicar el stash mas reciente. `git stash branch nombre_de_rama stash@{<num_stash>}`, crear una rama y aplicar un stash específico.
+* `git stash drop`: Eliminar los cambios más recientes dentro del stash (el elemento 0).
+* `git stash drop stash@{<num_stash>}`: Igual que el anterior pero especificando el stash.
+* `git stash clear`: Eliminar todos los elementos del stash.
+## GIT CLEAN
+A veces creamos archivos cuando estamos realizando nuestro proyecto que realmente no forman parte de nuestro directorio de trabajo, que no se deberían agregar y lo sabemos.
+ * `git clean --dry-run`: Para saber qué archivos vamos a borrar. [SIN BORRARLOS]
+ * `git clean -f`: Para borrar todos los archivos listados (que no son carpetas). [con `-d` ayuda a borrar carpetas untrackets].
+## Reconstruir commits en Git
+ A veces hacemos un commit, pero resulta que no queríamos mandarlo porque faltaba algo más.
+ * `git commit --amend`: remendar y lo que hará es que los cambios que hicimos nos los agregará al commit anterior.
+## Git nunca olvida--> git reflog
+Git guarda todos los cambios aunque decidas borrarlos, al borrar un cambio lo que estás haciendo sólo es actualizar la punta del branch, para gestionar éstas puntas existe un mecanismo llamado registros de referencia o reflogs.
+
+La gestión de estos cambios es mediante los hash’es de referencia (o ref) que son apuntadores a los commits.
+
+Los recoges registran cuándo se actualizaron las referencias de Git en el repositorio local (sólo en el local).
+
+* `git grep <palabra>`: nos buscará en todo el proyecto los archivos en donde está la palabra **palabra**.
+* `git grep -n <palabra>`: nos saldrá un output el cual nos dirá en qué línea está lo que estamos buscando.
+* `git grep -c <palabra>` nos saldrá un output el cual nos dirá cuántas veces se repite esa palabra y en qué archivo.
+Si queremos buscar cuántas veces utilizamos un atributo de HTML lo hacemos con `git grep -c "<p>"`.
+## Comandos y recuersos colaboratios en Git y Github
+* `git shortlog -sn` = muestra cuantos commit han hecho cada miembros del equipo.
+* `git shortlog -sn --all` = muestra cuantos commit han hecho cada miembros del equipo hasta los que han sido eliminado
+* `git shortlog -sn --all --no-merge` = muestra cuantos commit han hecho cada miembros quitando los eliminados sin los merges
+* `git blame ARCHIVO` = muestra quien hizo cada cosa linea por linea
+* `git COMANDO --help` = muestra como funciona el comando.
+* `git blame ARCHIVO -Llinea_inicial,linea_final`= muestra quien hizo cada cosa linea por linea indicándole desde que linea ver ejemplo -L35,50
+* `git branch -r` = se muestran todas las ramas remotas
+* `git branch -a` = se muestran todas las ramas tanto locales como remotas
+# Editor de markdown
+https://pandao.github.io/editor.md/en.html  🦾 
+https://getemoji.com/ Para buscar emojis 
