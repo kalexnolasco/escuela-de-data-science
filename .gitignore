@@ -1,6 +1,7 @@
 *.pyx
 *.pyc
 *.log
+*.aux
 
 # Editors
 .vscode

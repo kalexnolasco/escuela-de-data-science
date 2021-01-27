@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  texlive-full:
+    image: kalexnolasco/texlive-full
+    container_name: texlive-full
+    restart: always
+    command: pdflatex main.tex
+    volumes:
+      - ./:/data
+      - /etc/localtime:/etc/localtime
+
